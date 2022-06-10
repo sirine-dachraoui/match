@@ -24,8 +24,11 @@ table{
     }
     td:nth-of-type(n+8){
         overflow-y: auto;
-        display: block;
+        display: flex;
         width: auto;
         padding: 8% 0%;
+        justify-content: center;
+        align-items: center;
+
     }
 }
