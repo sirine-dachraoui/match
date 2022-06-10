@@ -1,0 +1,31 @@
+@use '../../variables' ;
+
+table{
+
+    border: 2px variables.$grey-color solid;    
+    width: 100%;
+
+    th{
+        border-right: 2px variables.$grey-color solid;
+        height: 7rem;
+        width: 5rem;  
+        background-color: variables.$red-color;
+        color: white;
+    }
+    td{
+        // padding: 2%;
+        text-align: center;
+        font-weight: 400;
+        border-right: 2px variables.$grey-color solid;  
+        border-top: 2px variables.$grey-color solid;  
+        overflow-wrap: anywhere;
+        height: 7rem;
+        width: 5rem;
+    }
+    td:nth-of-type(n+8){
+        overflow-y: auto;
+        display: block;
+        width: auto;
+        padding: 8% 0%;
+    }
+}

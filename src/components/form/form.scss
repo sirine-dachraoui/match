@@ -1,0 +1,194 @@
+@use '../../variables' ;
+
+
+div.form.main-container{
+    height: 100%;
+    display: grid;
+    grid-template-rows: 0.5fr 10fr ;
+    font-size: 1rem;
+
+
+    div.form-level{
+        background-color: variables.$red-color;
+        color: white;
+        padding: 0% 3.5%;
+        display: flex;
+        align-items: center;
+
+    }
+
+    form{
+        position: relative;
+        height: 100%;
+        display: grid;
+        
+        fieldset{
+
+            padding: 3.5%;
+            position : absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 80%;
+            border: none;
+
+            display: grid;
+            
+            select{
+                width: 25%;
+                padding: 0.5rem;
+                border-radius: 0;
+                height: fit-content;
+                font-size: 1.2rem;
+                min-width: fit-content;
+
+                option{
+                    background-color: variables.$grey-color;
+                    font-size: 1.2rem;
+                    text-align: center;
+                }
+                option:disabled{
+                    color : variables.$grey-color;
+                }
+
+            }    
+
+            input{
+                padding: 0.5rem;
+                font-size: 1.2rem;
+                height:fit-content ;
+                border-radius: 0;
+                border-width: 1px;
+                width: 100%;
+                min-width: fit-content;
+            }
+            textarea{
+                font-size: 1.2rem;
+                padding: 0.5rem;
+                font-family: sans-serif !important;
+            }
+
+        }
+
+        #general_a{
+            
+            grid-template-columns: 1fr 1fr;
+            gap: 20%;
+            row-gap: 4rem;
+
+        }
+
+        #general_b{
+            grid-template-columns: 1fr 1fr;
+            gap: 20%;
+            row-gap: 4rem;
+
+           
+            input[name="tournament_name"]{
+                
+                grid-row: 3; 
+            }
+            
+            textarea[name="comments"]{
+               
+                grid-row-end: 5;
+                grid-row-start: 2;
+            }
+        }
+
+        #teams{
+            grid-template-columns: 1fr 0.1fr 1fr;
+            gap : 10% ; 
+
+            hr{
+                display: block;
+                height : 1px;
+                color: variables.$grey-color;
+            }
+
+            select{
+                width: auto;
+            }
+
+            span{
+                text-align: center;
+                color : variables.$grey-color;
+            }
+        }
+
+        fieldset.hidden{
+            opacity :0;
+            z-index: -10;
+        }
+        fieldset.visible{
+            opacity :1;
+            z-index: 10;
+        }
+
+        div.pagination-btns{
+            position: absolute;
+            bottom: 0;
+            padding: 3.5%;
+            width: 100%;
+            display: flex;
+            justify-content: end;
+        }
+
+        button{
+            background-color: variables.$red-color;
+            color: white;
+            width: 10rem;
+            height: 2rem;
+            margin-right: 1%;
+        }
+        button:hover{
+            background-color: variables.$darker-red-color;
+            cursor: pointer;
+        }
+    
+        
+    }
+
+    
+}
+
+@media only screen and (max-width : 700px) {
+
+    div.form.main-container{
+
+        form{
+            
+            fieldset{
+                display: block;
+
+                div, input, select , textarea{
+                    margin-bottom: 2%;
+                    width: 100%;
+                }
+            }
+            .visible{
+               
+                position: static;
+            }
+            textarea{
+                height: 15em;
+            }
+
+            #teams {
+                select{
+                    width: 100%;
+                }
+                hr{
+                    margin-bottom: 3%;
+                }
+                span{
+                    display: block;
+                    margin-bottom: 3%;
+                }
+            }
+        }
+    }
+    
+}
+
+

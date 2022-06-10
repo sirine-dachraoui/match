@@ -1,0 +1,17 @@
+@use '../../variables' ;
+
+nav {
+
+    padding: 3.5% 0%;
+    a{
+        text-decoration: none;
+        background-color: variables.$red-color;
+        color: white;
+        padding: 2%;
+        margin-right: 1%;
+    }
+    a:hover{
+        background-color: variables.$darker-red-color;
+        
+    }
+}
