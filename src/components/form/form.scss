@@ -131,7 +131,7 @@ div.form.main-container{
             padding: 3.5%;
             width: 100%;
             display: flex;
-            justify-content: end;
+            justify-content: flex-end;
         }
 
         button{
@@ -171,7 +171,7 @@ div.form.main-container{
                 position: static;
             }
             textarea{
-                height: 15em;
+                height: 10em;
             }
 
             #teams {

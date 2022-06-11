@@ -62,26 +62,40 @@ export default function Form() {
 
         }else if (action === 'next'){
 
-            validate_before_continue()
+            // validate_before_continue()
             
             switch(section){
                 case 'Type':
-                    (match_type_ref.current.value === "Match Type") ? alert("Select a match type to continue") : setSection('General')
+                    
+                    if(match_type_ref.current.value === "Match Type"){
+                        alert("Select a match type to continue") 
+                    
+                    }else{
+                        setSection('General') 
+                        setLevel((level) => level+1)   
+                    }
+                    
                     break
                 case 'General' : 
-                
-                    validate_before_continue() ? setSection('Teams') : alert("Fill all the fields to continue")
+                    if(validate_before_continue()) {
+                        setSection('Teams')
+                        setLevel((level) => level+1)
+                    }else{
+                        alert("Fill all the fields to continue")
+                    }   
                     break
                 default : return null   
             }
 
-            setLevel((level) => level+1)
+           
         }  
         
     }
 
     const validate_before_continue = () =>{
 
+        var inputs_valid  , select_valid , textarea_valid  
+        
         var inputs = document.querySelectorAll('fieldset.visible input')
         var selections = document.querySelectorAll('fieldset.visible selection')
         var textarea = document.querySelector('fieldset.visible textarea')
@@ -89,22 +103,39 @@ export default function Form() {
             inputs.forEach((field) =>{
 
                 if (field.value === ''){
-                    return false
+                    inputs_valid = false             
+                }else if(field.value !== '' && inputs_valid !== false){
+
+                    inputs_valid = true
+                    
                 }
                 
             })
 
             selections.forEach((field) =>{
                 if (field.value === ''){
-                    return false
+                    
+                    select_valid = false             
+                }else if(field.value !== '' && select_valid !== false){
+
+                    select_valid = true
+                    
                 }
             })
             
-            if(textarea !== null && textarea.value == ''){
+            if(textarea !== null && textarea.value === ''){
                 
-                return false
+                textarea_valid = false
                 
+            }else if(textarea !== null && textarea !== undefined && textarea !== ''){
+                textarea_valid = true
             }
+
+        if (inputs_valid === false || select_valid === false || textarea_valid === false ) {
+                return false
+        }else {
+                return true
+            }   
         
     }
 
